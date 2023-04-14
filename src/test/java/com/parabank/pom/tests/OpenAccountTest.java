@@ -8,18 +8,19 @@ import org.testng.annotations.Test;
 
 public class OpenAccountTest extends BaseParaBankTest {
 
-    public OpenAccountTest(){
+    public OpenAccountTest() {
         super();
     }
+
     @Test
-    public void openAccountShouldSucceed(){
+    public void openAccountShouldSucceed() {
         OpenAccountPage openAccountPage = new LoginPage()
                 .fillUsername(getUsername())
                 .fillPassword(getPassword())
                 .clickLoginButton()
                 .clickOpenAccountLink()
                 .clickOpenNewAccountBtn();
-        Assert.assertTrue(openAccountPage.hasNewAccountIdDisplay());
+        Assert.assertTrue(openAccountPage.hasAccountOpenSmsDisplay());
 
     }
 

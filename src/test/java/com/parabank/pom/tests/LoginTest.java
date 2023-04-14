@@ -7,11 +7,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseParaBankTest {
-    public LoginTest(){
+    public LoginTest() {
         super();
     }
+
     @Test
-    public void loginShouldSucceed(){
+    public void loginShouldSucceed() {
         HomePage homePage = new LoginPage()
                 .fillUsername(getUsername())
                 .fillPassword(getPassword())

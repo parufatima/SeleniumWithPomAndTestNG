@@ -8,19 +8,22 @@ import org.openqa.selenium.support.PageFactory;
 public class OpenAccountPage extends BaseParaBankTest {
     @FindBy(css = "input.button")
     WebElement openNewAccountBtn;
-    @FindBy(css = "#newAccountId")
-    WebElement newAccountId;
+    @FindBy(xpath = "//*[text()='Account Opened!']")
+    WebElement newAccountOpenSms;
 
-    public OpenAccountPage(){
-        PageFactory.initElements(driver,this);
+    public OpenAccountPage() {
+        PageFactory.initElements(driver, this);
     }
-    public OpenAccountPage clickOpenNewAccountBtn(){
+
+    public OpenAccountPage clickOpenNewAccountBtn() {
         openNewAccountBtn.isDisplayed();
         openNewAccountBtn.click();
         return this;
     }
-    public boolean hasNewAccountIdDisplay(){
-       return newAccountId.isDisplayed();
+
+    public boolean hasAccountOpenSmsDisplay() {
+
+        return newAccountOpenSms.isDisplayed();
     }
 
 }

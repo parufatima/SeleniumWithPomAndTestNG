@@ -11,16 +11,18 @@ public class HomePage extends BaseParaBankTest {
     @FindBy(linkText = "Open New Account")
     WebElement openNewAccountLink;
 
-    public HomePage(){
-        PageFactory.initElements(driver,this);
+    public HomePage() {
+        PageFactory.initElements(driver, this);
     }
-    public OpenAccountPage clickOpenAccountLink(){
+
+    public OpenAccountPage clickOpenAccountLink() {
 
         openNewAccountLink.isDisplayed();
         openNewAccountLink.click();
         return new OpenAccountPage();
     }
-    public boolean  isLogoutTextDisplay(){
+
+    public boolean isLogoutTextDisplay() {
         return logoutText.isDisplayed();
     }
 

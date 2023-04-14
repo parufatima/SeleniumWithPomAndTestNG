@@ -15,65 +15,71 @@ import java.time.Duration;
 import java.util.Properties;
 
 public abstract class BaseParaBankTest {
-   private Properties properties;
-   public WebDriver driver;
+    private Properties properties;
+    public static WebDriver driver;
 
-   public BaseParaBankTest(){
-       try {
-       String filePath = System.getProperty("user.dir")+"/src/test/resources/config.properties";
-           properties = new Properties();
+    public BaseParaBankTest() {
+        try {
+            String filePath = System.getProperty("user.dir") + "/src/test/resources/config.properties";
+            properties = new Properties();
 
-        FileInputStream   fileInputStream = new FileInputStream(filePath);
-           properties.load(fileInputStream);
-       } catch (FileNotFoundException e) {
-           throw new RuntimeException(e);
-       } catch (IOException e) {
-           throw new RuntimeException(e);
-       }
+            FileInputStream fileInputStream = new FileInputStream(filePath);
+            properties.load(fileInputStream);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-   }
-   @BeforeMethod
-   public void browserSetup(){
-       String browserName = getBrowserName();
-       if(browserName.equals("chrome")){
-           WebDriverManager.chromedriver().setup();
-           driver = new ChromeDriver();
+    }
 
-       } else if (browserName.equals("firefox")){
-           WebDriverManager.firefoxdriver().setup();
-           driver = new FirefoxDriver();
+    @BeforeMethod
+    public void browserSetup() {
+        String browserName = getBrowserName();
+        if (browserName.equals("chrome")) {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
 
-       }else {
-           WebDriverManager.chromedriver().setup();
-           ChromeOptions chromeOptions = new ChromeOptions();
-           chromeOptions.setHeadless(true);
-           driver = new ChromeDriver(chromeOptions);
+        } else if (browserName.equals("firefox")) {
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
 
-       }
-       driver.get(getBaseUrl());
-       driver.manage().window().maximize();
-       driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
-       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        } else {
+            WebDriverManager.chromedriver().setup();
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.setHeadless(true);
+            driver = new ChromeDriver(chromeOptions);
+
+        }
+        driver.get(getBaseUrl());
+        driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 
-   }
+    }
+
     public String getBaseUrl() {
         return properties.getProperty("url");
     }
+
     public String getUsername() {
 
-       return properties.getProperty("username");
+        return properties.getProperty("username");
     }
+
     public String getPassword() {
 
-       return properties.getProperty("password");
+        return properties.getProperty("password");
     }
+
     public String getBrowserName() {
 
-       return properties.getProperty("browserName");
+        return properties.getProperty("browserName");
     }
+
     @AfterMethod
-    public void tearDown(){
-       driver.quit();
+    public void tearDown() {
+        driver.quit();
     }
 }
