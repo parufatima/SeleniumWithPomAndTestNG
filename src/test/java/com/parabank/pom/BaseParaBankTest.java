@@ -47,7 +47,7 @@ public abstract class BaseParaBankTest {
         } else {
             WebDriverManager.chromedriver().setup();
             ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.setHeadless(true);
+            chromeOptions.addArguments("-headless");
             driver = new ChromeDriver(chromeOptions);
 
         }

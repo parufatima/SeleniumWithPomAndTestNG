@@ -13,10 +13,13 @@ public class OpenAccountTest extends BaseParaBankTest {
     }
 
     @Test
-    public void openAccountShouldSucceed() {
-        OpenAccountPage openAccountPage = new LoginPage()
+    public void openAccountShouldSucceed() throws InterruptedException {
+        OpenAccountPage openAccountPage;
+        LoginPage loginPage = new LoginPage()
                 .fillUsername(getUsername())
-                .fillPassword(getPassword())
+                .fillPassword(getPassword());
+        Thread.sleep(3000);
+        openAccountPage = new LoginPage()
                 .clickLoginButton()
                 .clickOpenAccountLink()
                 .clickOpenNewAccountBtn();

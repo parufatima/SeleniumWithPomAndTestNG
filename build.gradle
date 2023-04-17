@@ -18,6 +18,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.testng/testng
     testImplementation 'org.testng:testng:7.7.1'
+    //dummy text
+    testImplementation 'com.thedeanda:lorem:2.1'
 
 
 

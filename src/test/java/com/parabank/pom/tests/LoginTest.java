@@ -3,6 +3,7 @@ package com.parabank.pom.tests;
 import com.parabank.pom.BaseParaBankTest;
 import com.parabank.pom.pages.HomePage;
 import com.parabank.pom.pages.LoginPage;
+import com.thedeanda.lorem.LoremIpsum;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

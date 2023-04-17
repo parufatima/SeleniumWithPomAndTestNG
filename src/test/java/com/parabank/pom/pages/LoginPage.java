@@ -12,6 +12,8 @@ public class LoginPage extends BaseParaBankTest {
     WebElement passwordEl;
     @FindBy(css = "input.button")
     WebElement loginBtn;
+    @FindBy(linkText = "Register")
+    WebElement registerLink;
 
     public LoginPage() {
         PageFactory.initElements(driver, this);
@@ -35,6 +37,11 @@ public class LoginPage extends BaseParaBankTest {
         loginBtn.isDisplayed();
         loginBtn.click();
         return new HomePage();
+    }
+    public RegisterPage clickRegisterLink(){
+        registerLink.isDisplayed();
+        registerLink.click();
+        return new RegisterPage();
     }
 
 }
